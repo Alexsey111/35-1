@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Добавить новый фильм{% endblock %}
+
+{% block content %}
+    <div class="form-container">
+        <h1 class="mb-4">Добавить новый фильм</h1>
+        <form method="post" class="needs-validation" novalidate>
+            {% csrf_token %}
+            <div class="form-group row">
+                <label for="{{ form.title.id_for_label }}" class="col-sm-2 col-form-label">Название</label>
+                <div class="col-sm-10">
+                    {{ form.title }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="{{ form.description.id_for_label }}" class="col-sm-2 col-form-label">Описание</label>
+                <div class="col-sm-10">
+                    {{ form.description }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="{{ form.review.id_for_label }}" class="col-sm-2 col-form-label">Отзыв</label>
+                <div class="col-sm-10">
+                    {{ form.review }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10 offset-sm-2">
+                    <button type="submit" class="btn btn-success">Сохранить</button>
+                </div>
+            </div>
+        </form>
+        <a class="btn btn-secondary mt-4" href="{% url 'film_list' %}">Вернуться к списку фильмов</a>
+    </div>
+{% endblock %}
